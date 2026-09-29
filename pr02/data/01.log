@@ -1,0 +1,7 @@
+auth ERROR Login failed
+auth ERROR Invalid password
+database WARN Slow query
+database ERROR Connection failed
+api WARN Deprecated request
+api ERROR Internal server error
+auth WARN Password expires soon

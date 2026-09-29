@@ -1,0 +1,6 @@
+api ERROR Database unavailable
+api ERROR Request failed
+database WARN High load
+database ERROR Query failed
+auth ERROR Access denied
+auth WARN Suspicious login
