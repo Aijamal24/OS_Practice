@@ -1,0 +1,131 @@
+============================================================
+ПРАКТИЧЕСКАЯ РАБОТА №10
+СТРАНИЧНАЯ ОРГАНИЗАЦИЯ
+============================================================
+
+Размер страницы: 1024 байт
+Адресное пространство: 16384 байт
+Количество страниц: 16
+Количество обращений: 26
+
+ТАБЛИЦА СТРАНИЦ
+Страница 0: 3
+Страница 1: 7
+Страница 2: отсутствует
+Страница 3: 1
+Страница 4: 9
+Страница 5: 4
+Страница 6: отсутствует
+Страница 7: 12
+Страница 8: 5
+Страница 9: 0
+Страница 10: 8
+Страница 11: отсутствует
+Страница 12: 6
+Страница 13: 10
+Страница 14: 2
+Страница 15: 11
+
+КОНТРОЛЬНЫЕ АДРЕСА
+LA=0, page=0, offset=0, frame=3, PA=3072
+LA=1023, page=0, offset=1023, frame=3, PA=4095
+LA=1024, page=1, offset=0, frame=7, PA=7168
+LA=2500: PAGE FAULT, page=2, offset=452
+LA=4096, page=4, offset=0, frame=9, PA=9216
+LA=6144: PAGE FAULT, page=6, offset=0
+
+ТРАНСЛЯЦИЯ С TLB
+LA=    0 | page= 0 | offset=   0 | MISS       | PA=3072
+LA=  100 | page= 0 | offset= 100 | HIT        | PA=3172
+LA=  500 | page= 0 | offset= 500 | HIT        | PA=3572
+LA= 1023 | page= 0 | offset=1023 | HIT        | PA=4095
+LA= 1024 | page= 1 | offset=   0 | MISS       | PA=7168
+LA= 1100 | page= 1 | offset=  76 | HIT        | PA=7244
+LA= 1500 | page= 1 | offset= 476 | HIT        | PA=7644
+LA= 2048 | page= 2 | offset=   0 | PAGE FAULT | PA=None
+LA= 2500 | page= 2 | offset= 452 | PAGE FAULT | PA=None
+LA= 3072 | page= 3 | offset=   0 | MISS       | PA=1024
+LA= 3500 | page= 3 | offset= 428 | HIT        | PA=1452
+LA= 4096 | page= 4 | offset=   0 | MISS       | PA=9216
+LA= 4500 | page= 4 | offset= 404 | HIT        | PA=9620
+LA= 5000 | page= 4 | offset= 904 | HIT        | PA=10120
+LA= 6000 | page= 5 | offset= 880 | MISS       | PA=4976
+LA= 7000 | page= 6 | offset= 856 | PAGE FAULT | PA=None
+LA= 8192 | page= 8 | offset=   0 | MISS       | PA=5120
+LA= 8500 | page= 8 | offset= 308 | HIT        | PA=5428
+LA= 9000 | page= 8 | offset= 808 | HIT        | PA=5928
+LA=10000 | page= 9 | offset= 784 | MISS       | PA=784
+LA=11000 | page=10 | offset= 760 | MISS       | PA=8952
+LA=12000 | page=11 | offset= 736 | PAGE FAULT | PA=None
+LA=13000 | page=12 | offset= 712 | MISS       | PA=6856
+LA=14000 | page=13 | offset= 688 | MISS       | PA=10928
+LA=15000 | page=14 | offset= 664 | MISS       | PA=2712
+LA=16000 | page=15 | offset= 640 | MISS       | PA=11904
+
+СТАТИСТИКА TLB
+Размер TLB: 4
+Hits: 10
+Misses: 16
+Page faults: 4
+Hit rate: 45.45%
+
+ЭФФЕКТИВНОЕ ВРЕМЯ ДОСТУПА
+Время памяти: 100 нс
+Время TLB: 10 нс
+Hit rate 0%: EAT = 210.00 нс
+Hit rate 25%: EAT = 185.00 нс
+Hit rate 50%: EAT = 160.00 нс
+Hit rate 75%: EAT = 135.00 нс
+Hit rate 90%: EAT = 120.00 нс
+Hit rate 100%: EAT = 110.00 нс
+
+Измеренный EAT: 164.55 нс
+
+ГРАФИК: РАЗМЕР TLB -> HIT RATE
+TLB= 1: hit rate=0.00%
+TLB= 2: hit rate=49.94%
+TLB= 3: hit rate=49.94%
+TLB= 4: hit rate=49.94%
+TLB= 5: hit rate=49.94%
+TLB= 6: hit rate=49.94%
+TLB= 8: hit rate=49.94%
+TLB=10: hit rate=99.44%
+TLB=12: hit rate=99.44%
+TLB=16: hit rate=99.44%
+
+ДВУХУРОВНЕВАЯ ТАБЛИЦА
+Page  0 -> L1=0, L2=0
+Page  1 -> L1=0, L2=1
+Page  2 -> L1=0, L2=2
+Page  3 -> L1=0, L2=3
+Page  4 -> L1=1, L2=0
+Page  5 -> L1=1, L2=1
+Page  6 -> L1=1, L2=2
+Page  7 -> L1=1, L2=3
+Page  8 -> L1=2, L2=0
+Page  9 -> L1=2, L2=1
+Page 10 -> L1=2, L2=2
+Page 11 -> L1=2, L2=3
+Page 12 -> L1=3, L2=0
+Page 13 -> L1=3, L2=1
+Page 14 -> L1=3, L2=2
+Page 15 -> L1=3, L2=3
+
+Без TLB:
+L1 -> L2 -> данные
+Всего обращений к памяти: 3
+
+При TLB HIT:
+TLB -> данные
+Обращений к памяти: 1 (не считая поиск в TLB)
+
+============================================================
+ИТОГОВЫЕ РЕЗУЛЬТАТЫ
+============================================================
+TLB hits: 10
+TLB misses: 16
+Page faults: 4
+Hit rate: 45.45%
+EAT: 164.55 нс
+Двухуровневая таблица без TLB: 3 обращения
+График сохранён: tlb_hit_rate.png
