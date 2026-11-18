@@ -1,0 +1,2 @@
+3 кадра: FIFO=15  LRU=12  Optimal=9
+4 кадра: FIFO=10  LRU=8  Optimal=8
